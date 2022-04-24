@@ -1,5 +1,7 @@
 require 'colorize'
 require 'tty-prompt'
+require 'tty-progressbar'
+require_relative("./bmi.rb")
 
 # Men: BMR = 88.362 + (13.397 x weight in kg) + (4.799 x height in cm) – (5.677 x age in years)
 # Women: BMR = 447.593 + (9.247 x weight in kg) + (3.098 x height in cm) – (4.330 x age in years)
@@ -24,8 +26,15 @@ require 'tty-prompt'
     MaleBMR = ((88.362 + (13.397 * weight)) + ((4.799 * height)) - (5.677 * age))
     FemaleBMR = ((447.593 + (9.247 * weight)) + ((3.098 * height)) - (4.330 * age))
 
+    bar = TTY::ProgressBar.new("downloading [:bar]", total: 15)
+
+    15.times do
+        sleep(0.1)
+        bar.advance  
+      end
+
     if gender == "m"
-        puts MaleBMR
+        puts MaleBMR.to_i
     else
-    puts FemaleBMR
+    puts FemaleBMR.to_i
     end
