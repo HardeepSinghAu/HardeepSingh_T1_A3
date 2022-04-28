@@ -1,26 +1,28 @@
 require 'colorize'
 require 'tty-prompt'
 require 'tty-progressbar'
+prompt = TTY::Prompt.new
 
-# require_relative("./calorie.rb")
 
-# class BMI
-#     def initialize(mass, height)
-#         @mass = mass
-#         @height = height
-#     end    
-#     def to_s
-#         return body = (#{@mass}/(#{@height}**2))
-#     end
-# end
 
-# user1 = BMI.new(65, 1.5)
-# puts user1
+begin
+mass = prompt.ask("We are now going to calculate your body mass index (BMI). Please enter your weight in kilograms: ", required: true)
 
-mass = 65
-height = 1.52
-BMI = (mass/height**2)
+puts "Please enter your height in metres: "
+height = gets.chomp.to_f
+
+BMI = (mass.to_f/height ** 2)
 puts "Your BMI is #{BMI.to_i}"
+rescue ZeroDivisionError
+    puts "height cannot be zero"
+    retry
+rescue TypeError
+    puts "cannot divide with a string"
+    retry
+rescue FloatDomainError
+        "please enter a valid number"
+    retry
+end
 
 case BMI
 when 0..18.5
@@ -35,9 +37,9 @@ else
     puts "Invalid input".red
 end
 
-ideal_weight_lower = height**2 * 18.5
-ideal_weight_upper = height**2 * 24.9 
+ideal_weight_lower = ((height ** 2) * 18.5)
+ideal_weight_upper = ((height ** 2) * 24.9) 
 puts "Your healthy weight range is #{ideal_weight_lower.to_i} to #{ideal_weight_upper.to_i}kg"
 
-sleep 2
+sleep 1
 puts "BMI is not an accurate indicator of health as it does not account for body fat percentage and distribution. For serious concerns regarding your health, always see your General Practioner.".red 
