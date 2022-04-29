@@ -49,19 +49,19 @@ while option != "4"
 
  case option
  when "1"
-   system "clear"
     require_relative "bmi.rb"
  when "2"
     require_relative "calories_required.rb"
  when "3"
     require_relative "counter.rb"
+    
  when "4"
     next
  else
  puts  "Invalid entry"
  end
  print "Press ENTER to continue..."
-   system "clear"
+
  gets
 end
 

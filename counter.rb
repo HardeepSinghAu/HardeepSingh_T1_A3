@@ -18,6 +18,7 @@ prompt = TTY::Prompt.new
 
 
 begin
+    def cal_count
     food_array = []
     prompt = TTY::Prompt.new
 
@@ -33,6 +34,20 @@ begin
     cal_per_food = food_item_calories.to_i * quantity
     print "your calorie intake for #{food_item} was #{cal_per_food}  "
     end
+    puts "would you like to add another food item? (y/n)"
+    ans = gets.chomp
+    if ans == "y"
+        cal_count
+    else
+        require_relative "index.rb"
+    end
+
 end
 
-more_food 
+cal_count
+
+    
+end
+
+
+# more_food 

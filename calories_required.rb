@@ -26,8 +26,8 @@ food_array = []
       end
 
     if gender == "m"
-        puts maleBMR.to_i
+        puts "Your calories required per day are #{maleBMR.to_i} calories."
     else
-    puts femaleBMR.to_i
+    puts "Your calories required per day are #{femaleBMR.to_i} calories."
     end
   end
