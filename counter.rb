@@ -5,15 +5,13 @@ prompt = TTY::Prompt.new
 
 
 
-# def 
-   
-
-#     print_intake(array)
-#     puts "Today you ate: "
-#   array.each do |product|
-#     puts "#{product}"
-#   end
-# end
+def 
+    print_intake(array)
+    puts "Today you ate: "
+  food_array.each do |product|
+    puts "#{product}"
+  end
+end
 
 
 
@@ -23,7 +21,7 @@ begin
     prompt = TTY::Prompt.new
 
     food_item = prompt.ask("What did you eat today? ")
-    # food_array << food_item
+    
     if food_array.include?(food_item)
         puts "you have already added #{food_item} please add a new food item"
     else food_array.push(food_item)
