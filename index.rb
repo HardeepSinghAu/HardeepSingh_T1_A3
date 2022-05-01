@@ -7,14 +7,17 @@ require 'tty-progressbar'
 # require_relative("./bmi.rb")
 
 prompt = TTY::Prompt.new
-food_array = []
+
+puts "Welcome to Calorie Counter!"
+
 
 def show_options
+   puts "==========================="
     puts "1. Calculate BMI"
     puts "2. Calculate minimum required calories per day"
     puts "3. Calculate my calorie intake for today"
     puts "4. Finished"
-    
+    puts "==========================="
     print "Enter your option: "
     opt =gets.chomp
     return opt
@@ -26,22 +29,6 @@ def print_intake(array)
     puts "#{product}"
   end
 end
-
-def add_calories(array)
-    print "What did you eat today? "
-    food_item = gets.chomp
-    if array.include?(food_item)
-        puts "you have already added #{food_item} please add a new food item "
-    else array.push(food_item)
-    print "how many calories is in one #{"food_item"}? "
-    food_item_calories = gets.chomp.to_i
-    print "how many #{food_item} did you eat today? "
-    quantity = gets.chomp.to_i
-    cal_per_food = food_item_calories * quantity
-    print "your calorie intake for #{food_item} was #{cal_per_food}."
-    end
-end
-
 
 option = ""
 while option != "4"

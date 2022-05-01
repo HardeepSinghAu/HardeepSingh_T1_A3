@@ -7,7 +7,7 @@ food_array = []
 
   prompt = TTY::Prompt.new
 
-    weight = prompt.ask("Hello! Please enter your weight in kg: ".yellow, required: true)
+    weight = prompt.ask("Please enter your weight in kg: ".yellow, required: true)
 
     height = prompt.ask("Please enter your height in cm: ".yellow, required: true)
     
@@ -26,8 +26,10 @@ food_array = []
       end
 
     if gender == "m"
+        puts "================================================================"
         puts "Your calories required per day are #{maleBMR.to_i} calories."
     else
-    puts "Your calories required per day are #{femaleBMR.to_i} calories."
+      puts "================================================================"
+      puts "Your calories required per day are #{femaleBMR.to_i} calories."
     end
   end

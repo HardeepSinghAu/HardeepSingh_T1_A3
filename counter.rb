@@ -18,7 +18,7 @@ begin
 
     food_item = prompt.ask("What did you eat today? ")
     
-    if eats.include?(food_item)
+    if eats.include? (food_item)
         puts "you have already added #{food_item} please add a new food item"
     else 
     end
@@ -33,6 +33,7 @@ begin
 
 
     eats.each do |row|
+        puts "================================================================"
         puts "you ate #{row["b"]} lots of #{row["a"]} which are #{row["c"]} calories each "
     end
 
