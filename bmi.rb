@@ -12,7 +12,7 @@ puts "Please enter your height in metres: "
 height = gets.chomp.to_f
 
 BMI = (mass.to_f/height ** 2)
-puts "================================================================"
+puts "==========================="
 puts "Your BMI is #{BMI.to_i}"
 rescue ZeroDivisionError
     puts "height cannot be zero"
