@@ -5,15 +5,6 @@ prompt = TTY::Prompt.new
 
 
 
-# def 
-#     print_intake(array)
-#     puts "Today you ate: "
-#   food_array.each do |product|
-#     puts "#{product}"
-#   end
-# end
-
-# make a hash to push user input onto
 
 
 
@@ -37,11 +28,14 @@ begin
     print "how many #{food_item} did you eat today? "
     quantity = gets.chomp.to_i
     cal_per_food = food_item_calories.to_i * quantity
-    eats << {food_item => a, quantity => b, food_item_calories => c}
 
-    eats.each do |a, b, c|
-    puts "You ate #{a} lots of #{b} which is #{c} calories  "
+    eats << {"a" => food_item, "b" => quantity, "c" => food_item_calories, "d" => cal_per_food}
+
+
+    eats.each do |row|
+        puts "you ate #{row["b"]} lots of #{row["a"]} which are #{row["c"]} calories each "
     end
+
     puts "would you like to add another food item? (y/n)"
     ans = gets.chomp
     if ans == "y"

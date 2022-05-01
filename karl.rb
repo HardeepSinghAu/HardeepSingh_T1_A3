@@ -32,6 +32,6 @@ prompt = TTY::Prompt.new
   b = prompt.ask("how many calories in 1 #{a}? ")
   c = prompt.ask("How many #{a} did you eat today? ")
   data << {"a"=>a, "b"=>b, "c"=>c}
-  data.each do |a, b, c|
-  puts "you ate #{a} which has #{b} calories #{c}"
+  data.each do |row|
+  puts "you ate #{row["a"]} which has #{row["b"]} and calories #{row["c"]}"
   end 
