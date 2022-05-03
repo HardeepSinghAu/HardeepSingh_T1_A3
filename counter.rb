@@ -9,7 +9,20 @@ prompt = TTY::Prompt.new
 
 
 begin
-    def cal_count
+
+class cal_count
+    def intialize(food_item, quantity, calories)
+        @food_item = food_item
+        @quantity = quantity
+        @calories = calculate
+    end
+
+    def add_calories(calories_total)
+        @calories_total = calories_total
+    end
+
+end
+
         
     eats = []
 
