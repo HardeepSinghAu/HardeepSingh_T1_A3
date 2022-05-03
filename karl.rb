@@ -1,7 +1,9 @@
-
+require 'colorize'
+require 'tty-prompt'
+require 'tty-progressbar'
 
 class Person
-  attr_reader :name, :age, :weight, :height, :gender, :cal_total, :body_mass_index 
+  attr_reader :name, :age, :weight, :height, :gender, :cal_total 
   def initialize(name, age, weight, height, gender)
     @name = name
     @age = age
@@ -17,10 +19,10 @@ class Person
 
   def bmi(weight, height)
     
-    bmi = (weight/((height/100) ** 2))
+    bmi = (@weight.to_f / (@height.to_f/100) ** 2)
     
       puts "==========================="
-      puts "Your BMI is #{bmi}"
+      puts "Your BMI is #{bmi.to_i}"
          
         case bmi
         when 0..18.5
@@ -35,25 +37,24 @@ class Person
           puts "Invalid input"
         end
          
-        ideal_weight_lower = ((height ** 2) * 18.5)
-        ideal_weight_upper = ((height ** 2) * 24.9) 
+        ideal_weight_lower = ((@height.to_f/100) ** 2) * 18.5
+        ideal_weight_upper = ((@height.to_f/100) ** 2) * 24.9 
           puts "Your healthy weight range is #{ideal_weight_lower.to_i} to #{ideal_weight_upper.to_i}kg"
          
         sleep 1
           puts "BMI is not an accurate indicator of health as it does not account for body fat percentage and distribution. For serious concerns regarding your health, always see your General Practioner."
-        
-        return bmi 
   end
 
   def cal_required(weight, height, age, gender)
     maleBMR = ((88.362 + (13.397 * @weight.to_f)) + ((4.799 * @height.to_f)) - (5.677 * @age.to_i))
     femaleBMR = ((447.593 + (9.247 * @weight.to_f)) + ((3.098 * @height.to_f)) - (4.330 * @age.to_i))
-    # bar = TTY::ProgressBar.new("downloading [:bar]", total: 15)
-
-    # 15.times do
-    #     sleep(0.1)
-    #     bar.advance  
-    #   end
+    
+    prompt = TTY::Prompt.new
+    bar = TTY::ProgressBar.new("downloading [:bar]", total: 15)
+    15.times do
+        sleep(0.1)
+        bar.advance  
+      end
     if @gender == "m"
         puts "==========================="
         puts "Your calories required per day are #{maleBMR.to_i} calories."

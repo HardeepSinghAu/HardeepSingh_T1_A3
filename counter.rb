@@ -7,34 +7,28 @@ prompt = TTY::Prompt.new
 
 
 
+class Total_cal
 
-begin
-
-class cal_count
-    def intialize(food_item, quantity, calories)
+    def initialize (food_item, calories_per_food, quantity)
         @food_item = food_item
+        @calories_per_food = calories_per_food
         @quantity = quantity
-        @calories = calculate
     end
 
-    def add_calories(calories_total)
-        @calories_total = calories_total
-    end
+    def add_food(food_item, calories_per_food, quantity)
 
-end
-
-        
     eats = []
-
+    foods = []
 
     prompt = TTY::Prompt.new
 
-    food_item = prompt.ask("What did you eat today? ")
+    @food_item = prompt.ask("What did you eat today? ")
     
-    if eats.include? (food_item)
+    if foods.include?(food_item)
         puts "you have already added #{food_item} please add a new food item"
     else 
     end
+    foods << food_item
 
     food_item_calories =  prompt.ask("how many calories is in one #{food_item}? ")
 
@@ -42,12 +36,11 @@ end
     quantity = gets.chomp.to_i
     cal_per_food = food_item_calories.to_i * quantity
 
-    eats << {"a" => food_item, "b" => quantity, "c" => food_item_calories, "d" => cal_per_food}
+    eats << cal_per_food
 
 
-    eats.each do |row|
-        puts "================================================================"
-        puts "you ate #{row["b"]} lots of #{row["a"]} which are #{row["c"]} calories each "
+    eats.each do |food_item, cal_per_food|
+        puts "you ate #{quantity} lots of #{row["food_item"]} which are #{row["cal_per_food"]} calories each "
     end
 
     puts "would you like to add another food item? (y/n)"
@@ -60,4 +53,5 @@ end
 
 end
 end
-cal_count
+
+
