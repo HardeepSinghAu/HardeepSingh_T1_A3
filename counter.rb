@@ -1,6 +1,8 @@
 require 'colorize'
 require 'tty-prompt'
 require 'tty-progressbar'
+require_relative("./karl.rb")
+
 prompt = TTY::Prompt.new
 
 
@@ -96,3 +98,4 @@ def add_food(food_item, calories_per_food, quantity)
 end
 end
 
+p shama.add_food

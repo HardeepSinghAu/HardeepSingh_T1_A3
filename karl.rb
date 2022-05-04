@@ -63,15 +63,52 @@ class Person
       puts "Your calories required per day are #{femaleBMR.to_i} calories."
     end
   end
+  justin = Person.new("Justin", 36, 71, 157, "f")
+  def add_food(food_item, calories_per_food, quantity)
+    eats = []
+    foods = []
+
+    prompt = TTY::Prompt.new
+
+    food_item = prompt.ask("What did you eat today? ")
+  
+    if foods.include?(food_item)
+      puts "you have already added #{food_item} please add a new food item"
+    else 
+    end
+    foods << food_item
+
+    food_item_calories =  prompt.ask("how many calories is in one #{food_item}? ")
+
+    print "how many #{food_item} did you eat today? "
+    quantity = gets.chomp.to_i
+    cal_per_food = food_item_calories.to_i * quantity
+
+    eats << cal_per_food
+
+
+    eats.each do |cal_per_food|
+      puts "you ate #{quantity} lots of #{food_item} which are #{cal_per_food} calories total. "
+    end
+
+    puts "would you like to add another food item? (y/n)"
+    ans = gets.chomp
+    if ans == "y"
+        justin.add_food()
+    else
+      require_relative "index.rb"
+    end
+  end
 end
 
 
 # display
 
-shama = Person.new("Shama", 36, 71, 157, "f")
-shama.add_calories(15)
-shama.add_calories(15)
+justin = Person.new("Justin", 36, 71, 157, "f")
+justin.add_calories(15)
+justin.add_calories(15)
 
-p shama.cal_total
-p shama.bmi(71, 157)
-p shama.cal_required(71, 157, 36, "f")
+p justin.cal_total
+p justin.bmi(71, 157)
+p justin.cal_required(71, 157, 36, "f")
+p justin.add_food("lime", 22, 2)
