@@ -2,12 +2,13 @@ require 'colorize'
 require 'tty-prompt'
 require 'tty-progressbar'
 
+require_relative 'bmi.rb'
+
 begin
-food_array = []
 
   prompt = TTY::Prompt.new
 
-    weight = prompt.ask("Please enter your weight in kg: ".yellow, required: true)
+    # weight = prompt.ask("Please enter your weight in kg: ".yellow, required: true)
 
     height = prompt.ask("Please enter your height in cm: ".yellow, required: true)
     
@@ -15,8 +16,8 @@ food_array = []
     
     gender = prompt.ask("are you male or female? (m/f): ".yellow.strip, required: true)
 
-    maleBMR = ((88.362 + (13.397 * weight.to_f)) + ((4.799 * height.to_f)) - (5.677 * age.to_i))
-    femaleBMR = ((447.593 + (9.247 * weight.to_f)) + ((3.098 * height.to_f)) - (4.330 * age.to_i))
+    maleBMR = ((88.362 + (13.397 * $weight.to_f)) + ((4.799 * height.to_f)) - (5.677 * age.to_i))
+    femaleBMR = ((447.593 + (9.247 * $weight.to_f)) + ((3.098 * height.to_f)) - (4.330 * age.to_i))
 
     bar = TTY::ProgressBar.new("downloading [:bar]", total: 15)
 

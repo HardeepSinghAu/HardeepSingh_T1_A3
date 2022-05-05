@@ -1,17 +1,16 @@
 require 'colorize'
 require 'tty-prompt'
 require 'tty-progressbar'
+
 prompt = TTY::Prompt.new
 
-
-
 begin
-mass = prompt.ask("We are now going to calculate your body mass index (BMI). Please enter your weight in kilograms: ", required: true)
+$weight = prompt.ask("We are now going to calculate your body mass index (BMI). Please enter your weight in kilograms: ", required: true)
 
 puts "Please enter your height in metres: "
 height = gets.chomp.to_f
 
-BMI = (mass.to_f/height ** 2)
+BMI = ($weight.to_f/height ** 2)
 puts "==========================="
 puts "Your BMI is #{BMI.to_i}"
 rescue ZeroDivisionError

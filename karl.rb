@@ -7,7 +7,7 @@ class Person
   def initialize(name, age, weight, height, gender)
     @name = name
     @age = age
-    @weight = weight
+    @weight = weight 
     @height = height
     @gender = gender
     @cal_total = 0
